@@ -33,7 +33,8 @@ phases:
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/codepipeline-dojo:latest
     finally:
       - echo "Pushing done"
-      - printf '[{"name":"your.task.definition.name","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
 
-  artifacts:
-      files: imagedefinitions.json
+artifacts:
+  files:
+    - '**/*'
+  name: myname-$(date +%Y-%m-%d) 
