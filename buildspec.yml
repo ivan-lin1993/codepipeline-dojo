@@ -1,0 +1,35 @@
+version: 0.2
+        
+phases:
+  install:
+    on-failure: ABORT
+    commands: 
+      - echo "Install"
+      - curl https://dot.net/v1/dotnet-install.sh -o dotnet-install.sh
+      - bash ./dotnet-install.sh -c 5.0
+      - rm ./dotnet-install.sh
+    finally:
+      - echo "Install done"
+  pre_build:
+    on-failure: ABORT
+    commands:
+      - echo "Testing"
+      - dotnet test
+    finally:
+      - echo "Testing Done"
+  build:
+    on-failure: ABORT
+    commands:
+      - echo "Docker build"
+      - docker build -t codepipeline-dojo .
+    finally:
+      - echo "Docker build done"
+  post_build:
+    on-failure: ABORT
+    commands:
+      - echo "Pushing"
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com
+      - docker tag codepipeline-dojo:latest $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/codepipeline-dojo:latest
+      - docker push $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/codepipeline-dojo:latest
+    finally:
+      - echo "Pushing done"

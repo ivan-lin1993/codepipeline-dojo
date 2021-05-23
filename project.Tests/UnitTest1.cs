@@ -22,7 +22,7 @@ namespace project.Tests
         [Fact]
         public void Test3()
         {
-            Assert.Equal("Bracin",  _weatherForeCastService.getSummary(-10));
+            Assert.Equal("Bracing",  _weatherForeCastService.getSummary(-10));
         }
     }
 }
