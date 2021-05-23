@@ -28,8 +28,12 @@ phases:
     on-failure: ABORT
     commands:
       - echo "Pushing"
-      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com
-      - docker tag codepipeline-dojo:latest $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/codepipeline-dojo:latest
-      - docker push $ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/codepipeline-dojo:latest
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - docker tag codepipeline-dojo:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/codepipeline-dojo:latest
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/codepipeline-dojo:latest
     finally:
       - echo "Pushing done"
+      - printf '[{"name":"your.task.definition.name","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
+
+  artifacts:
+      files: imagedefinitions.json
