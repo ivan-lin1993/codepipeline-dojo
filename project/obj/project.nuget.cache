@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "RyAONkJeFDE5BIgzvENe2RePq85YbaA7ou7+XocKhN6MJSbQiR7f5nNx77c/iQ7nlvoAUVYtC7nxLyozx0RrLA==",
+  "success": true,
+  "projectFilePath": "/home/ecv-ivan/codepipeline-dojo2/codepipeline-dojo/project/project.csproj",
+  "expectedPackageFiles": [
+    "/home/ecv-ivan/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/home/ecv-ivan/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/ecv-ivan/.nuget/packages/swashbuckle.aspnetcore/5.6.3/swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "/home/ecv-ivan/.nuget/packages/swashbuckle.aspnetcore.swagger/5.6.3/swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "/home/ecv-ivan/.nuget/packages/swashbuckle.aspnetcore.swaggergen/5.6.3/swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "/home/ecv-ivan/.nuget/packages/swashbuckle.aspnetcore.swaggerui/5.6.3/swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
