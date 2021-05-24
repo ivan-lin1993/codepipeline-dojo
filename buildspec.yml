@@ -32,13 +32,9 @@ phases:
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
       - docker tag codepipeline-dojo:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/codepipeline-dojo:latest
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/codepipeline-dojo:latest
-      - printf '[{"name":"%s","imageUri":"%s"}]' $TASKDEF_NAME $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/codepipeline-dojo:latest > imagedefinitions.json
     finally:
       - echo "Pushing done"
-post_build:
-    commands:
       
 artifacts:
   files: 
-    - imagedefinitions.json
     - appspec.yml
