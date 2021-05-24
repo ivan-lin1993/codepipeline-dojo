@@ -1,9 +1,0 @@
-version: 0.0
-Resources:
-  - TargetService:
-      Type: AWS::ECS::Service
-      Properties:
-        TaskDefinition: "arn:aws:ecs:us-west-2:006920391431:task-definition/codepipeline-dojo:1" # Specify the ARN of your task definition (arn:aws:ecs:region:account-id:task-definition/task-definition-family-name:task-definition-revision-number)
-        LoadBalancerInfo: 
-          ContainerName: "codepipeline-dojo" # Specify the name of your Amazon ECS application's container
-          ContainerPort: "5000" # Specify the port for your container where traffic reroutes 
