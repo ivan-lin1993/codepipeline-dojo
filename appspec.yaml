@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: <TASK_DEFINITION>
+        TaskDefinition: arn:aws:ecs:us-west-2:006920391431:task-definition/codepipeline-dojo
         LoadBalancerInfo:
           ContainerName: "codepipeline-dojo"
           ContainerPort: 5000
